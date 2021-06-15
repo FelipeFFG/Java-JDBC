@@ -1,13 +1,12 @@
 import java.sql.*;
-import java.util.List;
 
 public class TestaListagem {
     public static void main(String[] args) throws SQLException {  //avisando que ele pode dar sql exception.
 
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8080/loja_virtual?useTimezone=true&serverTimezone=UTC", "root", "root");
+       ConnectionFactory connectionFactory = new ConnectionFactory();
+       Connection connection = connectionFactory.recuperarConexao();
 
-
-        Statement stm = con.createStatement();
+        Statement stm = connection.createStatement();
         stm.execute("SELECT ID,NOME,DESCRICAO FROM PRODUTO");   //quando retorna uma lista,ele retorna true.
 
         ResultSet rst = stm.getResultSet();                    //Pegar o resultado
@@ -24,7 +23,7 @@ public class TestaListagem {
         }
 
 
-        con.close();
+        connection.close();
 
     }
 }
