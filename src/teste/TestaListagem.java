@@ -1,3 +1,7 @@
+package teste;
+
+import factory.ConnectionFactory;
+
 import java.sql.*;
 
 public class TestaListagem {

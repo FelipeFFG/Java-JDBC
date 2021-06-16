@@ -1,6 +1,8 @@
-import javax.swing.plaf.nimbus.State;
+package teste;
+
+import factory.ConnectionFactory;
+
 import java.sql.*;
-import java.util.concurrent.ExecutionException;
 
 public class TestaInsersaoComParametro {
     public static void main(String[] args) throws SQLException {

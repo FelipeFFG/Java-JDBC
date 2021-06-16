@@ -1,3 +1,9 @@
+package teste;
+
+import dao.ProdutoDAO;
+import factory.ConnectionFactory;
+import modelo.Produto;
+
 import java.sql.*;
 import java.util.List;
 

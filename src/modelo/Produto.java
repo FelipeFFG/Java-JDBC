@@ -1,3 +1,5 @@
+package modelo;
+
 public class Produto {
 
     private Integer id;
@@ -30,7 +32,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" +
+        return "modelo.Produto{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +

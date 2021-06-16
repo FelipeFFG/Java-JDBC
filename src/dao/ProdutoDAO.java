@@ -1,3 +1,8 @@
+package dao;
+
+import modelo.Categoria;
+import modelo.Produto;
+
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,7 +15,7 @@ public class ProdutoDAO {
     private Connection connection;
 
 
-    public ProdutoDAO(Connection connection) {
+    public ProdutoDAO(Connection connection){
         this.connection = connection;
     }
 
@@ -62,4 +67,25 @@ public class ProdutoDAO {
             }
         }
     }*/
+
+    public List<Produto> buscar(Categoria ct) throws SQLException{
+        List<Produto> produtos = new ArrayList<Produto>();
+        System.out.println("EXECUTANDO A QUERY DE BUSCAR PRODUTO POR CATEGORIA");
+        String sql = "SELECT  ID,NOME,DESCRICAO FROM PRODUTO WHERE CATEGORIA_ID = ?";
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setInt(1,ct.getId());
+            pstm.execute();
+            try (ResultSet rst = pstm.getResultSet()) {
+                while (rst.next()) {
+                    Produto produto = new Produto(rst.getInt(1), rst.getString(2), rst.getString(3));
+                    produtos.add(produto);
+                }
+            }
+        }
+        return produtos;
+    }
+
+
+
+
 }
